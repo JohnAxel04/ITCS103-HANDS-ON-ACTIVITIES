@@ -1,4 +1,3 @@
-import time
 
 listKo = []
 
@@ -47,3 +46,4 @@ def com():
     else:
         print(f"Your Name '{x}' is less than the average")
 com()
+
