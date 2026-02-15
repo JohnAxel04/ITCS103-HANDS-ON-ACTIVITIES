@@ -1,4 +1,4 @@
-
+##
 listKo = []
 
 print("Welcome to my Activity")
@@ -46,4 +46,5 @@ def com():
     else:
         print(f"Your Name '{x}' is less than the average")
 com()
+
 
