@@ -10,9 +10,15 @@ def loginNaman():
         if user == usernames[-1] and passw == passwords[-1]:
             logMain['text'] = "Succesfully logged"
             logMain['bg'] = "green"
+            loginTop['bg'] = "green"
+            userLabel['bg'] = "green"
+            passLabel['bg'] = "green"
         else:
             logMain['text'] = "Credential Invalid"
             logMain['bg'] = "red"
+            loginTop['bg'] = "red"
+            userLabel['bg'] = "red"
+            passLabel['bg'] = "red"
     loginTop = log.Toplevel(window)
     loginTop.grab_set()
     loginTop.transient(window)
@@ -44,12 +50,24 @@ def registerMuna():
         passw = passwordEntry.get()
         if len(passw) < 8 and len(passw) > 0:
             regLabel['text'] = "Password must be 8 character"
+            regLabel['bg'] = "red"
+            regTop['bg'] = "red"
+            username['bg'] = "red"
+            password['bg'] = "red"
         elif len(passw) >= 8:
             usernames.append(user)
             passwords.append(passw)
             regLabel['text'] = "Account Succesfully Registered"
+            regTop['bg'] = "green"
+            regLabel['bg'] = "green"
+            username['bg'] = "green"
+            password['bg'] = "green"
         else:
             regLabel['text'] = "Input must not be blank"
+            regTop['bg'] = "red"
+            regLabel['bg'] = "red"
+            username['bg'] = "red"
+            password['bg'] = "red"
         print(usernames,passwords)
     regTop = log.Toplevel(window)
     regTop.grab_set()
@@ -71,7 +89,7 @@ def registerMuna():
     registerButton.grid(columnspan=3,row=4)
 window = log.Tk()
 
-mainLabel = log.Label(window,text="Welcome")
+mainLabel = log.Label(window,text="Welcome",font=("arial",12,"bold"))
 mainLabel.pack(fill="x")
 img = log.PhotoImage(file="pic.png")
 img = img.subsample(7,7)
