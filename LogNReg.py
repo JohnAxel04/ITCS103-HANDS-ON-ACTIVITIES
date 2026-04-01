@@ -1,7 +1,18 @@
 import tkinter as log
-username = []
-password = []
+usernames = []
+passwords = []
+
 def loginNaman():
+    
+    def loggin():
+        user = userEntry.get()
+        passw = passEntry.get()
+        if user == usernames[-1] and passw == passwords[-1]:
+            logMain['text'] = "Succesfully logged"
+            logMain['bg'] = "green"
+        else:
+            logMain['text'] = "Credential Invalid"
+            logMain['bg'] = "red"
     loginTop = log.Toplevel(window)
     loginTop.grab_set()
     loginTop.transient(window)
@@ -23,9 +34,23 @@ def loginNaman():
     passEntry.grid(row=5,column=1,columnspan=2)
     showEntryPass = log.Checkbutton(loginTop,text="Show Password")
     showEntryPass.grid(row=6,column=1,columnspan=2)
-    loginButton = log.Button(loginTop,text="Log In")
+    loginButton = log.Button(loginTop,text="Log In",command=loggin)
     loginButton.grid(row=7,columnspan=3)
+
 def registerMuna():
+    
+    def regMo():
+        user = usernameEntry.get()
+        passw = passwordEntry.get()
+        if len(passw) < 8 and len(passw) > 0:
+            regLabel['text'] = "Password must be 8 character"
+        elif len(passw) >= 8:
+            usernames.append(user)
+            passwords.append(passw)
+            regLabel['text'] = "Account Succesfully Registered"
+        else:
+            regLabel['text'] = "Input must not be blank"
+        print(usernames,passwords)
     regTop = log.Toplevel(window)
     regTop.grab_set()
     regTop.transient(window)
@@ -42,7 +67,7 @@ def registerMuna():
     passwordEntry.grid(row=2,column=1,columnspan=2)
     showpass = log.Checkbutton(regTop,text="Show Password")
     showpass.grid(column=1,row=3,columnspan=2)
-    registerButton = log.Button(regTop,text="register")
+    registerButton = log.Button(regTop,text="register",command=regMo)
     registerButton.grid(columnspan=3,row=4)
 window = log.Tk()
 
