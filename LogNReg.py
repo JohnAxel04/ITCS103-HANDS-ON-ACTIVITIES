@@ -69,6 +69,14 @@ def registerMuna():
             username['bg'] = "red"
             password['bg'] = "red"
         print(usernames,passwords)
+    def onoffs():
+        newshow = showvar.get()
+        if newshow == 1:
+            passwordEntry['show'] = "normal"
+        elif newshow == 0:
+            passwordEntry['show'] = "*"
+        else:
+            passwordEntry['show'] = "error"
     regTop = log.Toplevel(window)
     regTop.grab_set()
     regTop.transient(window)
@@ -81,9 +89,10 @@ def registerMuna():
     usernameEntry.grid(column=1,row=1,columnspan=2)
     password  = log.Label(regTop,text="Password:")
     password.grid(column=0,row=2)
-    passwordEntry = log.Entry(regTop)
+    passwordEntry = log.Entry(regTop,show="letters")
     passwordEntry.grid(row=2,column=1,columnspan=2)
-    showpass = log.Checkbutton(regTop,text="Show Password")
+    showvar = log.IntVar()
+    showpass = log.Checkbutton(regTop,text="Show Password",onvalue=1,command=onoffs,variable=showvar)
     showpass.grid(column=1,row=3,columnspan=2)
     registerButton = log.Button(regTop,text="register",command=regMo)
     registerButton.grid(columnspan=3,row=4)
