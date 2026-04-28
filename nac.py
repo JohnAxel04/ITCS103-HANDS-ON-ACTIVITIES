@@ -1,0 +1,30 @@
+import tkinter as new
+import openpyxl as op
+def submitted():
+    newname = nameEntry.get()
+    newage = ageEntry.get()
+    newcourse = courseEntry.get()
+
+    wrk = op.Workbook()
+    sheet = wrk.active
+    sheet.append([newname,newage,newcourse])
+    wrk.save("File.xlsx")
+window = new.Tk()
+window.title("Openpyxl")
+mainlabel = new.Label(window,text="Fill up the blank")
+mainlabel.grid(columnspan=3)
+namelabel = new.Label(window,text="name: ")
+namelabel.grid(row=2)
+nameEntry = new.Entry(window)
+nameEntry.grid(row=2,column=1,columnspan=2)
+agelabel = new.Label(window,text="age: ")
+agelabel.grid(row=3,column=0)
+ageEntry = new.Entry(window)
+ageEntry.grid(row=3,column=1,columnspan=2)
+courseLabel = new.Label(window,text="Course: ")
+courseLabel.grid(row=4,column=0)
+courseEntry = new.Entry(window)
+courseEntry.grid(row=4,column=1,columnspan=2)
+btn = new.Button(window,text="Submit",command=submitted,width=10)
+btn.grid(row=5,column=0,columnspan=4)
+window.mainloop()
